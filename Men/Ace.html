@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Men's Accessories</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #000;
+            --secondary-color: #fff;
+            --accent-color: #4CAF50;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            background-color: #f9f3f3;
+            color: var(--primary-color);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .top-section {
+            text-align: left;
+            max-width: 500px;
+        }
+
+        .breadcrumb {
+            margin-bottom: 10px;
+            font-size: 14px;
+            color: #6d6a6a;
+        }
+
+        .header {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+
+        .description {
+            width: 800px;
+            margin-bottom: 15px;
+            color: #1f1b1b;
+        }
+
+        .refine-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: var(--primary-color);
+            color: var(--secondary-color);
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .refine-button:hover {
+            background-color: var(--accent-color);
+            transform: scale(1.05);
+        }
+
+        .products {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .product {
+            background-color: var(--secondary-color);
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            overflow: hidden;
+            transition: transform 0.3s ease;
+            position: relative;
+            text-align: center;
+            padding-bottom: 15px;
+        }
+
+        .product:hover {
+            transform: scale(1.05);
+        }
+
+        .product img {
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .product-details {
+            padding: 10px;
+        }
+
+        .product-name {
+            font-weight: bold;
+            margin: 10px 0;
+        }
+
+        .product-name-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+            transition: color 0.3s ease;
+            font-size: larger;
+        }
+
+        .product-name-btn:hover {
+            color: var(--accent-color);
+        }
+
+        .product-price {
+            color: #333;
+            font-weight: bold;
+            margin-top: 5px;
+        }
+
+        @media screen and (max-width: 768px) {
+            .products {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            .products {
+                grid-template-columns: 1fr;
+            }
+
+            .top-section {
+                max-width: 100%;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="top-section">
+            <div class="breadcrumb">
+                <a href="#">Home</a> / Men / Accessories
+            </div>
+            <div class="header">MEN'S ACCESSORIES</div>
+            <p class="description"> Our range of men’s fitness accessories will keep you on track with your goals whatever your sport or training practice. Reebok socks will keep your feet cool and comfortable whether you’re running, weightlifting at the gym or playing basketball – choose from black trainer socks or classic white ankle socks for a retro feel. Top your look off with a bucket hat or cap.
+
+            </p>
+            <button class="refine-button" onclick="showRefineOptions()">Refine</button>
+        </div>
+
+        <div class="products" id="productsContainer"></div>
+    </div>
+
+    <script>
+        const productData = [
+            { name: "Vector Knitted Cap", img: "https://images.reebok.eu/reebok-ltd-vector-knitted-cap_20526758_47712596_1000.jpg?c=1", price: 95 },
+            { name: "Training Essentials Gym Sack", img: "https://images.reebok.eu/reebok-training-essentials-gym-sack_19724911_44991508_1000.jpg?c=1", price: 69.99 },
+            { name: "Reebok Flow Baseball Cap", img: "https://images.reebok.eu/reebok-reebok-flow-baseball-cap_24180345_56226581_1000.jpg?c=1", price: 49.99 },
+            { name: "Baseball Cap", img: "https://images.reebok.eu/reebok-ltd-baseball-cap_22332107_52371936_1000.jpg?c=1", price: 39.99 },
+            { name: "3-Pack Sports Essentials Crew Socks", img: "https://images.reebok.eu/reebok-3-pack-sports-essentials-crew-socks_22480965_54801524_1000.jpg?c=1", price: 79.99 },
+            { name: "Reebok Newport Phone Shoulder Bag", img: "https://images.reebok.eu/reebok-reebok-newport-phone-shoulder-bag_23050799_53335606_1000.jpg?c=1", price: 69.99 },
+            { name: "Reebok Originals Flat Brim Baseball Cap", img: "https://images.reebok.eu/reebok-reebok-originals-flat-brim-baseball-cap_24179848_56226652_1000.jpg?c=1", price: 49.99 },
+            { name: "Trekking Crew Socks", img: "https://images.reebok.eu/reebok-trekking-crew-socks_22480951_54790120_1000.jpg?c=1", price: 39.99 },
+            { name: "Reebok x Botter Soccer Bag", img: "https://images.reebok.eu/reebok-ltd-reebok-x-botter-soccer-bag_23357141_56251960_1000.jpg?c=1", price: 79.99 },
+            { name: "Reebok Backpack Royal", img: "https://images.reebok.eu/reebok-reebok-backpack-royal_23051863_53335717_1000.jpg?c=1", price: 69.99 },
+            { name: "Reebok Bucket Hat", img: "https://images.reebok.eu/reebok-reebok-bucket-hat_24179841_56226930_1000.jpg?c=1", price: 49.99 },
+            { name: "Compression Running Socks", img: "https://images.reebok.eu/reebok-compression-running-socks_22480947_54799171_1000.jpg?c=1", price: 39.99 },
+            { name: "Dragon Baseball Hat", img: "https://images.reebok.eu/reebok-ltd-dragon-baseball-hat_22332129_52372030_1000.jpg?c=1", price: 79.99 },
+            { name: "3-Pack Sports Essentials Vector Ankle Socks", img: "https://images.reebok.eu/reebok-3-pack-sports-essentials-vector-ankle-socks_22480942_54804848_1000.jpg?c=1", price: 69.99 },
+            { name: "Reebok Newport Phone Shoulder Bag", img: "https://images.reebok.eu/reebok-reebok-newport-phone-shoulder-bag_23050797_53335592_1000.jpg?c=1", price: 49.99 },
+            { name: "Reebok Originals Flat Brim Baseball Cap", img: "https://images.reebok.eu/reebok-reebok-originals-flat-brim-baseball-cap_24179848_56226652_1000.jpg?c=1", price: 39.99 },
+            { name: "Reebok Flow Baseball Cap", img: "https://images.reebok.eu/reebok-reebok-flow-baseball-cap_24179850_56226602_1000.jpg?c=1", price: 79.99 },
+            { name: "Reebok x Hed Mayner Mid Socks", img: "https://images.reebok.eu/reebok-ltd-reebok-x-hed-mayner-mid-socks_23356332_57413104_1000.jpg?c=1", price: 69.99 },
+            { name: "Reebok x Botter Paneled Cap", img: "https://images.reebok.eu/reebok-ltd-reebok-x-botter-paneled-cap_23356330_56251928_1000.jpg?c=1", price: 49.99 },
+            { name: "Drilled Cut-Out Socks", img: "https://images.reebok.eu/reebok-ltd-drilled-cut-out-socks_22332116_52372635_1000.jpg?c=1", price: 39.99 },
+            { name: "Reebok Backpack Royal", img: "https://images.reebok.eu/reebok-reebok-backpack-royal_23050796_53335579_1000.jpg?c=1", price: 79.99 },
+            { name: "Cycling Low-Cut Socks", img: "https://images.reebok.eu/reebok-cycling-low-cut-socks_22480955_54758082_1000.jpg?c=1", price: 69.99 },
+            { name: "Reebok Vector Baseball Cap", img: "https://images.reebok.eu/reebok-reebok-vector-baseball-cap_24180342_56226770_1000.jpg?c=1", price: 49.99 },
+            { name: "2-Pack Running Ankle Socks", img: "https://images.reebok.eu/reebok-2-pack-running-ankle-socks_22481696_54804715_1000.jpg?c=1", price: 39.99 },
+        ];
+
+        function renderProducts() {
+            const productsContainer = document.getElementById('productsContainer');
+            productsContainer.innerHTML = '';
+
+            productData.forEach((product) => {
+                const productCard = document.createElement('div');
+                productCard.classList.add('product');
+                productCard.innerHTML = `
+                    <img src="${product.img}" alt="${product.name}">
+                    <div class="product-details">
+                        <button class="product-name-btn product-name" onclick="showProductDetails('${product.name}')">
+                            ${product.name}
+                        </button>
+                        <div class="product-price">£${product.price.toFixed(2)}</div>
+                    </div>
+                `;
+                productsContainer.appendChild(productCard);
+            });
+        }
+
+        function showProductDetails(productName) {
+            alert(`More details about: ${productName}`);
+        }
+
+        function showRefineOptions() {
+            alert('Refine options: Size, Color, Price Range, Brand');
+        }
+
+        renderProducts();
+    </script>
+</body>
+</html>

@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Women's Shoes</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #000;
+            --secondary-color: #fff;
+            --accent-color: #4CAF50;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            background-color: #f9f3f3;
+            color: var(--primary-color);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .top-section {
+            text-align: left;
+            max-width: 500px;
+        }
+
+        .breadcrumb {
+            margin-bottom: 10px;
+            font-size: 14px;
+            color: #6d6a6a;
+        }
+
+        .header {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+
+        .description {
+            width: 800px;
+            margin-bottom: 15px;
+            color: #1f1b1b;
+        }
+
+        .refine-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: var(--primary-color);
+            color: var(--secondary-color);
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .refine-button:hover {
+            background-color: var(--accent-color);
+            transform: scale(1.05);
+        }
+
+        .products {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .product {
+            background-color: var(--secondary-color);
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            overflow: hidden;
+            transition: transform 0.3s ease;
+            position: relative;
+            text-align: center;
+            padding-bottom: 15px;
+        }
+
+        .product:hover {
+            transform: scale(1.05);
+        }
+
+        .product img {
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .product-details {
+            padding: 10px;
+        }
+
+        .product-name {
+            font-weight: bold;
+            margin: 10px 0;
+        }
+
+        .product-name-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+            transition: color 0.3s ease;
+            font-size: larger;
+        }
+
+        .product-name-btn:hover {
+            color: var(--accent-color);
+        }
+
+        .product-price {
+            color: #333;
+            font-weight: bold;
+            margin-top: 5px;
+        }
+
+        @media screen and (max-width: 768px) {
+            .products {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            .products {
+                grid-template-columns: 1fr;
+            }
+
+            .top-section {
+                max-width: 100%;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="top-section">
+            <div class="breadcrumb">
+                <a href="#">Home</a> / Women / Shoes
+            </div>
+            <div class="header">WOMEN'S SHOES</div>
+            <p class="description">Our selection of women’s trainers covers everything from workout shoes for the gym – including the iconic Nano series – to chunky platform sneakers for your street-style looks. Choose classic white trainers or express yourself with vibrant shades like pink.
+
+ 
+            </p>
+            <button class="refine-button" onclick="showRefineOptions()">Refine</button>
+        </div>
+
+        <div class="products" id="productsContainer"></div>
+    </div>
+
+    <script>
+        const productData = [
+        { name: "Nano Court", img: "https://images.reebok.eu/reebok-nano-court_23356461_53580271_1000.jpg?c=1", price: 79.99 },
+            { name: "Reebok x Recess Nano Court Shoes", img: "https://images.reebok.eu/reebok-reebok-x-recess-nano-court-shoes_23868937_54664080_1000.jpg?c=1", price: 69.99 },
+            { name: "Nano X4", img: "https://images.reebok.eu/reebok-nano-x4_22251631_52236528_1000.jpg?c=1", price: 49.99 },
+            { name: "Club C Revenge Vintage Sneakers", img: "https://images.reebok.eu/reebok-club-c-revenge-vintage-sneakers_22252331_53427331_1000.jpg?c=1", price: 39.99 },
+            { name: "ERS World Shoes", img: "https://images.reebok.eu/reebok-ers-world-shoes_23868942_54664133_1000.jpg?c=1", price: 79.99 },
+            { name: "Club C Grounds UK Shoes", img: "https://images.reebok.eu/reebok-club-c-grounds-uk-shoes_20138427_50316025_1000.jpg?c=1", price: 69.99 },
+            { name: "AT Craze 3", img: "https://images.reebok.eu/reebok-at-craze-3_23356543_54114425_1000.jpg?c=1", price: 49.99 },
+            { name: "NFX Sneakers", img: "https://images.reebok.eu/reebok-nfx-sneakers_22250972_52513078_1000.jpg?c=1", price: 39.99 },
+            { name: "Energen Lux Sneakers", img: "https://images.reebok.eu/reebok-energen-lux-sneakers_22250971_52440468_1000.jpg?c=1", price: 79.99 },
+            { name: "Reebok Lite 4", img: "https://images.reebok.eu/reebok-reebok-lite-4_23357208_53522272_1000.jpg?c=1", price: 69.99 },
+            { name: "Classic Leather", img: "https://images.reebok.eu/reebok-classic-leather_23357171_53831520_1000.jpg?c=1", price: 49.99 },
+            { name: "Flexagon Force 4 Training Shoes", img: "https://images.reebok.eu/reebok-flexagon-force-4-training-shoes_23356493_54098826_1000.jpg?c=1", price: 39.99 },
+            { name: "Reebok Jogger Lite Sneakers", img: "https://images.reebok.eu/reebok-reebok-jogger-lite-sneakers_22253087_52543008_1000.jpg?c=1", price: 79.99 },
+            { name: "Reebok DL5000 Shoes", img: "https://images.reebok.eu/reebok-reebok-dl5000-shoes_22471415_53373746_1000.jpg?c=1", price: 69.99 },
+            { name: "Flexagon Energy TR 4", img: "https://images.reebok.eu/reebok-flexagon-energy-tr-4_22250878_52160204_1000.jpg?c=1", price: 49.99 },
+            { name: "FloatZig 1", img: "https://images.reebok.eu/reebok-floatzig-1_22251563_53373716_1000.jpg?c=1", price: 39.99 },
+            { name: "Lavante Trail 2 Sneakers", img: "https://images.reebok.eu/reebok-lavante-trail-2-sneakers_22252183_52446358_1000.jpg?c=1", price: 79.99 },
+            { name: "Classic Leather Sneakers", img: "https://images.reebok.eu/reebok-classic-leather-sneakers_22470719_53427812_1000.jpg?c=1", price: 69.99 },
+            { name: "Panini Preseason 94 Shoes", img: "https://images.reebok.eu/reebok-panini-preseason-94-shoes_22471439_53374136_1000.jpg?c=1", price: 49.99 },
+            { name: "Zig Kinetica 2.5 Edge Sneakers", img: "https://images.reebok.eu/reebok-zig-kinetica-2-5-edge-sneakers_22253085_52758857_1000.jpg?c=1", price: 39.99 },
+            { name: "Nanoflex TR 2", img: "https://images.reebok.eu/reebok-nanoflex-tr-2_22253006_52160885_1000.jpg?c=1", price: 79.99 },
+            { name: "Club C Grounds UK", img: "https://images.reebok.eu/reebok-club-c-grounds-uk_22251577_52236750_1000.jpg?c=1", price: 69.99 },
+            { name: "Instapump Fury 94 Sneakers", img: "https://images.reebok.eu/reebok-instapump-fury-94-sneakers_22250953_52494433_1000.jpg?c=1", price: 49.99 },
+            { name: "Club C Revenge Sneakers", img: "https://images.reebok.eu/reebok-club-c-revenge-sneakers_22471455_53427861_1000.jpg?c=1", price: 39.99 },
+        ];
+
+        function renderProducts() {
+            const productsContainer = document.getElementById('productsContainer');
+            productsContainer.innerHTML = '';
+
+            productData.forEach((product) => {
+                const productCard = document.createElement('div');
+                productCard.classList.add('product');
+                productCard.innerHTML = `
+                    <img src="${product.img}" alt="${product.name}">
+                    <div class="product-details">
+                        <button class="product-name-btn product-name" onclick="showProductDetails('${product.name}')">
+                            ${product.name}
+                        </button>
+                        <div class="product-price">£${product.price.toFixed(2)}</div>
+                    </div>
+                `;
+                productsContainer.appendChild(productCard);
+            });
+        }
+
+        function showProductDetails(productName) {
+            alert(`More details about: ${productName}`);
+        }
+
+        function showRefineOptions() {
+            alert('Refine options: Size, Color, Price Range, Brand');
+        }
+
+        renderProducts();
+    </script>
+</body>
+</html>

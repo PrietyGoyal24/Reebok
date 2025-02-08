@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reebok x Sonic</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        .top-banner {
+            background-color: #1e3c8c;
+            color: white;
+            text-align: center;
+            padding: 12px;
+            font-size: 14px;
+        }
+
+        .main-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
+            border-bottom: 1px solid #e5e5e5;
+            background: white;
+        }
+
+        .logo img {
+            width: 120px;
+            height: auto;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: black;
+            text-transform: uppercase;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .header-icons {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .hero-banner {
+            position: relative;
+            height: 420px;
+            background: linear-gradient(to right, white 50%, #f0f0f0 50%);
+        }
+
+        .hero-banner img {
+            position: absolute;
+            max-width: 130%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .breadcrumb {
+            padding: 20px 40px;
+            font-size: 14px;
+        }
+
+        .page-title {
+            padding: 0 40px 20px;
+            font-size: 24px;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            padding: 0 40px 40px;
+        }
+
+        .product-card {
+            text-align: center;
+        }
+
+        .product-card img {
+            width: 100%;
+            aspect-ratio: 1;
+            object-fit: cover;
+            background: #f5f5f5;
+        }
+
+        .product-card .wishlist {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: white;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+
+        .product-details {
+            margin-top: 10px;
+        }
+
+        .product-price {
+            font-weight: bold;
+        }
+
+        .pagination {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            padding: 20px 0;
+        }
+
+        .club-banner {
+            background-color: #ee2f24;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
+        }
+
+        .footer {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            padding: 40px;
+        }
+
+        .footer-section h3 {
+            text-transform: uppercase;
+            margin-bottom: 15px;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section a {
+            text-decoration: none;
+            color: black;
+        }
+
+        .copyright {
+            background-color: #1e3c8c;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .product-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="top-banner">
+        ORDER BY DECEMBER 17th TO GET YOUR GIFTS BEFORE CHRISTMAS!
+    </div>
+
+    <header class="main-header">
+        <div class="logo">
+            <img src="https://inkythuatso.com/uploads/thumbnails/800/2021/12/reebok-logo-inkythuatso-5-01-07-10-16-29.jpg" alt="Reebok Logo">
+        </div>
+        <nav>
+            <ul class="nav-menu">
+                <li><a href="#">WOMEN</a></li>
+                <li><a href="#">MEN</a></li>
+                <li><a href="#">KIDS</a></li>
+                <li><a href="#">CLASSICS</a></li>
+                <li><a href="#">SPORTS</a></li>
+                <li><a href="#">REEBOK LTD</a></li>
+                <li><a href="#">STORIES</a></li>
+            </ul>
+        </nav>
+        <div class="header-icons">
+            <select>
+                <option>GB / £ EN</option>
+            </select>
+            <button>🔍</button>
+            <button>👤</button>
+            <button>❤</button>
+            <button>🛒</button>
+        </div>
+    </header>
+
+    <div class="hero-banner">
+        <img src="https://www.reebok.eu/BWStaticContent/153000/d880e658-fe49-411c-93ce-a5a1d2b891aa_desk-sonic.jpg" alt="Sonic x Reebok Banner">
+    </div>
+
+    <div class="breadcrumb">
+        Home / Kids
+    </div>
+
+    <h1 class="page-title">REEBOK OFFICIAL UK </h1>
+
+    <div class="product-grid">
+        <div class="product-card">
+            <img src="https://images.reebok.eu/reebok-kids-reebok-x-sonic-zig-dynamica-2-0-shoes_23868955_56012327_2048.jpg?c=1" alt="Zig Dynamica Shoes">
+            <button class="wishlist">♡</button>
+            <div class="product-details">
+                <div class="product-price">£60</div>
+                <div>Reebok x Sonic Zig Dynamica 2.0 Shoes</div>
+                <div>Kids' Running Shoes</div>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <img src="https://images.reebok.eu/reebok-kids-sonic-x-reebok-club-c_24996897_56012256_2048.jpg?c=1" alt="Sonic Club C">
+            <button class="wishlist">♡</button>
+            <div class="product-details">
+                <div class="product-price">£55</div>
+                <div>Sonic x Reebok Club C</div>
+                <div>Kids' Kids Shoes</div>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <img src="https://images.reebok.eu/reebok-kids-reebok-x-sonic-classic-leather-shoes_23868954_56012313_2048.jpg?c=1" alt="Classic Leather Shoes">
+            <button class="wishlist">♡</button>
+            <div class="product-details">
+                <div class="product-price">£55</div>
+                <div>Reebok x Sonic Classic Leather Shoes</div>
+                <div>Kids' Youth Shoes</div>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <img src="https://images.reebok.eu/reebok-kids-reebok-road-supreme-4-0-sneakers_23361470_53884321_2048.jpg?c=1" alt="Chill Sneakers">
+            <button class="wishlist">♡</button>
+            <div class="product-details">
+                <div class="product-price">£50</div>
+                <div>ATR Chill Sneakers</div>
+                <div>Kids' Kids Shoes</div>
+            </div>
+        </div>
+        <div class="product-card">
+            <img src="https://images.reebok.eu/reebok-kids-reebok-xt-sprinter-slip_23357764_53580209_2048.jpg?c=1" alt="Chill Sneakers">
+            <button class="wishlist">♡</button>
+            <div class="product-details">
+                <div class="product-price">£45</div>
+                <div>Reebok Xt Sprinter Slip</div>
+                <div>Kids' Kids Shoes</div>
+            </div>
+        </div>
+        <div class="product-card">
+            <img src="https://images.reebok.eu/reebok-kids-reebok-smash-edge-sneakers_25354948_56882690_2048.jpg?c=1" alt="Chill Sneakers">
+            <button class="wishlist">♡</button>
+            <div class="product-details">
+                <div class="product-price">£70</div>
+                <div>Reebok Smash Edge Sneakers</div>
+                <div>Kids' Kids Shoes</div>
+            </div>
+        </div>
+        <div class="product-card">
+            <img src="https://images.reebok.eu/reebok-kids-zig-dynamica-5-sneakers_25355174_56882906_2048.jpg?c=1" alt="Chill Sneakers">
+            <button class="wishlist">♡</button>
+            <div class="product-details">
+                <div class="product-price">£57</div>
+                <div></div>
+                <div>Kids' Kids Shoes</div>
+            </div>
+        </div>
+        <div class="product-card">
+            <img src="https://images.reebok.eu/reebok-kids-reebok-xt-sprinter-2-0-sneakers_23357773_53876071_2048.jpg?c=1" alt="Chill Sneakers">
+            <button class="wishlist">♡</button>
+            <div class="product-details">
+                <div class="product-price">£60</div>
+                <div>Reebok XT Sprinter 2.0 Sneakers
+                </div>
+                <div>Kids' Kids Shoes</div>
+            </div>
+        </div>
+        <div class="product-card">
+            <img src="https://images.reebok.eu/reebok-kids-atr-chill-sneakers_23357761_57430437_2048.jpg?c=1" alt="Chill Sneakers">
+            <button class="wishlist">♡</button>
+            <div class="product-details">
+                <div class="product-price">£75</div>
+                <div>XT Sprinter Slip Sneakers</div>
+                <div>Kids' Kids Shoes</div>
+            </div>
+        </div>
+        <div class="product-card">
+            <img src="https://images.reebok.eu/reebok-kids-reebok-xt-sprinter-2-0-sneakers_23361467_53874444_2048.jpg?c=1" alt="Chill Sneakers">
+            <button class="wishlist">♡</button>
+            <div class="product-details">
+                <div class="product-price">£45</div>
+                <div>Reebok XT Sprinter 2.0 Sneakers</div>
+                <div>Kids' Kids Shoes</div>
+            </div>
+        </div>
+        <div class="product-card">
+            <img src="https://images.reebok.eu/reebok-kids-rush-runner-5-0-syn-sneakers_23361473_53884358_2048.jpg?c=1" alt="Chill Sneakers">
+            <button class="wishlist">♡</button>
+            <div class="product-details">
+                <div class="product-price">£50</div>
+                <div>Rush Runner 5.0 Syn Sneakers</div>
+                <div>Kids' Kids Shoes</div>
+            </div>
+        </div>
+        <div class="product-card">
+            <img src="https://images.reebok.eu/reebok-kids-rush-runner-5-syn-sneakers_25355184_56882735_2048.jpg?c=1" alt="Chill Sneakers">
+            <button class="wishlist">♡</button>
+            <div class="product-details">
+                <div class="product-price">£100</div>
+                <div>Rush Runner 5 SYN Sneakers</div>
+                <div>Kids' Kids Shoes</div>
+            </div>
+        </div>
+        <div class="product-card">
+            <img src="https://images.reebok.eu/reebok-kids-rush-runner-5-td-sneakers_25355179_56882707_2048.jpg?c=1" alt="Chill Sneakers">
+            <button class="wishlist">♡</button>
+            <div class="product-details">
+                <div class="product-price">£58</div>
+                <div>Rush Runner 5 TD Sneakers</div>
+                <div>Kids' Kids Shoes</div>
+            </div>
+        </div>
+        <div class="product-card">
+            <img src="https://images.reebok.eu/reebok-kids-reebok-x-blippi-club-c-shoes_23868907_55488547_2048.jpg?c=1" alt="Chill Sneakers">
+            <button class="wishlist">♡</button>
+            <div class="product-details">
+                <div class="product-price">£76</div>
+                <div>Reebok x Blippi Club C Shoes</div>
+                <div>Kids' Kids Shoes</div>
+            </div>
+        </div>
+        <div class="product-card">
+            <img src="https://images.reebok.eu/reebok-kids-atr-chill_23361438_53859875_2048.jpg?c=1" alt="Chill Sneakers">
+            <button class="wishlist">♡</button>
+            <div class="product-details">
+                <div class="product-price">£87</div>
+                <div>Club C Revenge</div>
+                <div>Kids' Kids Shoes</div>
+            </div>
+        </div>
+        <div class="product-card">
+            <img src="https://images.reebok.eu/reebok-kids-club-c-revenge_23361441_53883875_2048.jpg?c=1" alt="Chill Sneakers">
+            <button class="wishlist">♡</button>
+            <div class="product-details">
+                <div class="product-price">£54</div>
+                <div>C Revenge</div>
+                <div>Kids' Kids Shoes</div>
+            </div>
+        </div>
+        <div class="product-card">
+            <img src="https://images.reebok.eu/reebok-kids-classic-leather_23361435_53484606_2048.jpg?c=1" alt="Chill Sneakers">
+            <button class="wishlist">♡</button>
+            <div class="product-details">
+                <div class="product-price">£42</div>
+                <div>ATR Chill </div>
+                <div>Kids' Kids Shoes</div>
+            </div>
+        </div>
+        <div class="product-card">
+            <img src="https://images.reebok.eu/reebok-kids-reebok-royal-prime-step-n-flash-shoes-preschool_23361456_54171886_2048.jpg?c=1" alt="Chill Sneakers">
+            <button class="wishlist">♡</button>
+            <div class="product-details">
+                <div class="product-price">£75</div>
+                <div>Classic Leather</div>
+                <div>Kids' Kids Shoes</div>
+            </div>
+        </div>
+        <div class="product-card">
+            <img src="https://images.reebok.eu/reebok-kids-reebok-road-supreme-4-0-sneakers_23361470_53884321_2048.jpg?c=1" alt="Chill Sneakers">
+            <button class="wishlist">♡</button>
+            <div class="product-details">
+                <div class="product-price">£65</div>
+                <div>Reebok Royal Prime Step 'N' Flash Shoes - Preschool</div>
+                <div>Kids' Kids Shoes</div>
+            </div>
+        </div>
+        <div class="product-card">
+            <img src="https://images.reebok.eu/reebok-kids-court-advance_23361483_53989340_2048.jpg?c=1" alt="Chill Sneakers">
+            <button class="wishlist">♡</button>
+            <div class="product-details">
+                <div class="product-price">£87</div>
+                <div>Court Advance</div>
+                <div>Kids' Kids Shoes</div>
+            </div>
+        </div>
+        <div class="product-card">
+            <img src="https://images.reebok.eu/reebok-kids-classic-leather-shoes-preschool_23361443_54928128_2048.jpg?c=1" alt="Chill Sneakers">
+            <button class="wishlist">♡</button>
+            <div class="product-details">
+                <div class="product-price">£69</div>
+                <div>Classic Leather Shoes - Preschool</div>
+                <div>Kids' Kids Shoes</div>
+            </div>
+        </div>
+        <div class="product-card">
+            <img src="https://images.reebok.eu/reebok-kids-reebok-royal-prime-mid-2-0-sneakers_22252299_52507053_2048.jpg?c=1" alt="Chill Sneakers">
+            <button class="wishlist">♡</button>
+            <div class="product-details">
+                <div class="product-price">£59</div>
+                <div>Reebok Royal Prime Step N' Flash</div>
+                <div>Kids' Kids Shoes</div>
+            </div>
+        </div>
+        <div class="product-card">
+            <img src="https://images.reebok.eu/reebok-kids-reebok-x-anuel-aa-classic-leather-shoes-grade-school_23868884_54172023_2048.jpg?c=1" alt="Chill Sneakers">
+            <button class="wishlist">♡</button>
+            <div class="product-details">
+                <div class="product-price">£35</div>
+                <div>Classic Jogger</div>
+                <div>Kids' Kids Shoes</div>
+            </div>
+        </div>
+        <div class="product-card">
+            <img src="https://images.reebok.eu/reebok-kids-reebok-royal-classic-jogger-3-0-1v-sneakers_23361475_53876750_2048.jpg?c=1" alt="Chill Sneakers">
+            <button class="wishlist">♡</button>
+            <div class="product-details">
+                <div class="product-price">£77</div>
+                <div>Reebok Royal Classic Jogger 3.0 1V Sneakers</div>
+                <div>Kids' Kids Shoes</div>
+            </div>
+        </div>
+        <div class="product-card">
+            <img src="https://images.reebok.eu/reebok-kids-reebok-x-hot-wheels-classic-leather-step-n-flash_22470717_52652979_2048.jpg?c=1" alt="Chill Sneakers">
+            <button class="wishlist">♡</button>
+            <div class="product-details">
+                <div class="product-price">£45</div>
+                <div>Reebok x Hot Wheels Classic Leather Step N Flash</div>
+                <div>Kids' Kids Shoes</div>
+            </div>
+        </div>
+        <div class="product-card">
+            <img src="https://images.reebok.eu/reebok-kids-reebok-xt-sprinter-2-0-sneakers_23361467_53874444_2048.jpg?c=1" alt="Chill Sneakers">
+            <button class="wishlist">♡</button>
+            <div class="product-details">
+                <div class="product-price">£90</div>
+                <div>Reebok XT Sprinter 2.0 Sneakers
+                    </div>
+                <div>Kids' Kids Shoes</div>
+            </div>
+        </div>
+        <div class="product-card">
+            <img src="https://images.reebok.eu/reebok-kids-reebok-xt-sprinter-2-0-alt-sneakers_22252018_52502233_2048.jpg?c=1" alt="Chill Sneakers">
+            <button class="wishlist">♡</button>
+            <div class="product-details">
+                <div class="product-price">£30</div>
+                <div>Reebok XT Sprinter 2.0 ALT Sneakers</div>
+                <div>Kids' Kids Shoes</div>
+            </div>
+        </div>
+        <div class="product-card">
+            <img src="https://images.reebok.eu/reebok-kids-reebok-xt-sprinter-slip_23357764_53580210_2048.jpg?c=1" alt="Chill Sneakers">
+            <button class="wishlist">♡</button>
+            <div class="product-details">
+                <div class="product-price">£62</div>
+                <div>Reebok Xt Sprinter Slip</div>
+                <div>Kids' Kids Shoes</div>
+            </div>
+        </div>
+        <div class="product-card">
+            <img src="https://images.reebok.eu/reebok-kids-sonic-x-reebok-club-c_24996897_56012256_2048.jpg?c=1" alt="Chill Sneakers">
+            <button class="wishlist">♡</button>
+            <div class="product-details">
+                <div class="product-price">£95</div>
+                <div>Sonic x Reebok Club C</div>
+                <div>Kids' Kids Shoes</div>
+            </div>
+        </div>
+        <div class="product-card">
+            <img src="https://images.reebok.eu/reebok-kids-reebok-x-sonic-classic-leather-shoes_23868954_56012313_2048.jpg?c=1" alt="Chill Sneakers">
+            <button class="wishlist">♡</button>
+            <div class="product-details">
+                <div class="product-price">£65</div>
+                <div>Reebok x Sonic Classic Leather Shoes</div>
+                <div>Kids' Kids Shoes</div>
+            </div>
+        </div>
+        <div class="product-card">
+            <img src="https://images.reebok.eu/reebok-kids-reebok-royal-prime-2-0-sneakers_22250931_52487589_2048.jpg?c=1" alt="Chill Sneakers">
+            <button class="wishlist">♡</button>
+            <div class="product-details">
+                <div class="product-price">£54</div>
+                <div>Reebok Royal Prime 2.0 Sneakers</div>
+                <div>Kids' Kids Shoes</div>
+            </div>
+        </div>
+        <div class="product-card">
+            <img src="https://images.reebok.eu/reebok-kids-reebok-x-hot-wheels-classic-leather-step-n-flash_22470717_52652979_2048.jpg?c=1" alt="Chill Sneakers">
+            <button class="wishlist">♡</button>
+            <div class="product-details">
+                <div class="product-price">£60</div>
+                <div>Reebok x Hot Wheels Classic Leather Step N Flash</div>
+                <div>Kids' Kids Shoes</div>
+            </div>
+        </div>
+    </div>
+
+    </div>
+
+    </div>
+
+    </div>
+
+    </div>
+
+    </div>
+
+    </div>
+
+    </div>
+
+    </div>
+
+    </div>
+
+    </div>
+
+    </div>
+
+    </div>
+
+    </div>
+
+    </div>
+
+    </div>
+
+    </div>
+
+    </div>
+
+    </div>
+
+    </div>
+
+    </div>
+
+    </div>
+    
+
+    </div>
+
+    </div>
+
+    </div>
+
+    </div>
+
+    </div>
+
+    </div>
+
+    </div> 
+
+   
+
+    <div class="club-banner">
+        <h2>JOIN THE REEBOK CLUB</h2>
+        <button>JOIN THE CLUB</button>
+    </div>
+
+    <footer>
+        <div class="footer">
+            <div class="footer-section">
+                <h3>Support</h3>
+                <ul>
+                    <li><a href="#">Help</a></li>
+                    <li><a href="#">Track your order</a></li>
+                    <li><a href="#">Return your order</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>Legal</h3>
+                <ul>
+                    <li><a href="#">Terms & Conditions</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Cookie Policy</a></li>
+                    <li><a href="#">Cookie Preferences</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>Country/Currency</h3>
+                <p>United Kingdom / £ <a href="#">Change</a></p>
+                <h3>Payment Methods</h3>
+                <div>
+                    <img src="/api/placeholder/40/24" alt="Payment Methods">
+                </div>
+            </div>
+        </div>
+
+        <div class="copyright">
+            Reebok™ is a trademark of Reebok International Limited. ©2023 Reebok International Limited. All Rights Reserved.
+        </div>
+    </footer>
+</body>
+</html>
