@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search UI</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f8f8f8;
+        }
+
+        .search-container {
+            width: 50%;
+            min-width: 400px;
+        }
+
+        .search-box {
+            width: 100%;
+            padding: 12px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            outline: none;
+        }
+
+        .popular-searches {
+            margin-top: 20px;
+        }
+
+        .popular-searches h3 {
+            font-size: 18px;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .search-list {
+            list-style: none;
+        }
+
+        .search-list li {
+            padding: 8px 0;
+            font-size: 16px;
+            color: #555;
+            cursor: pointer;
+        }
+
+        .search-list li:hover {
+            color: black;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="search-container">
+        <input type="text" class="search-box" placeholder="What are you looking for?" id="searchInput">
+        <div class="popular-searches">
+            <h3>POPULAR SEARCHES</h3>
+            <ul class="search-list">
+                <li onclick="setSearch('Running')">Running</li>
+                <li onclick="setSearch('Training')">Training</li>
+                <li onclick="setSearch('Club C')">Club C</li>
+                <li onclick="setSearch('Nano')">Nano</li>
+                <li onclick="setSearch('Cardi B')">Cardi B</li>
+                <li onclick="setSearch('Backpacks')">Backpacks</li>
+                <li onclick="setSearch('Yoga')">Yoga</li>
+                <li onclick="setSearch('Pump')">Pump</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        function setSearch(value) {
+            document.getElementById("searchInput").value = value;
+        }
+    </script>
+
+</body>
+</html>

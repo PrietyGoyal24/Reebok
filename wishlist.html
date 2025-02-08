@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Wishlist</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f8f8;
+        }
+
+        header {
+            background-color: #000;
+            color: #fff;
+            padding: 10px 20px;
+            text-align: center;
+            font-size: 18px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .wishlist-items {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .wishlist-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            border-bottom: 1px solid #ccc;
+        }
+
+        .wishlist-item:last-child {
+            border-bottom: none;
+        }
+
+        .wishlist-item span {
+            font-size: 16px;
+        }
+
+        .wishlist-item button {
+            background-color: #ff4d4d;
+            color: #fff;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .wishlist-item button:hover {
+            background-color: #cc0000;
+        }
+
+        .total {
+            text-align: right;
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .empty {
+            text-align: center;
+            font-size: 16px;
+            color: #666;
+            margin-top: 20px;
+        }
+
+        .shop-now {
+            display: block;
+            margin: 20px auto;
+            text-align: center;
+            background-color: #000;
+            color: #fff;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            width: fit-content;
+        }
+
+        .shop-now:hover {
+            background-color: #333;
+        }
+    </style>
+</head>
+<body>
+    <header>MY WISHLIST</header>
+    <div class="container">
+        <h1>My Wishlist</h1>
+        <ul class="wishlist-items" id="wishlist"></ul>
+        <p class="empty" id="emptyMessage">You haven't added any items to your wishlist yet.</p>
+        <p class="total" id="total"></p>
+        <a href="#" class="shop-now">Shop Now</a>
+    </div>
+
+    <script>
+        // Sample product data
+        const products = [
+            { id: 1, name: "Product 1", price: 500 },
+            { id: 2, name: "Product 2", price: 750 },
+            { id: 3, name: "Product 3", price: 1200 },
+        ];
+
+        // Simulating items added to the cart
+        const cart = []; // Dynamic array that gets populated with added items
+
+        // Function to render the wishlist
+        function renderWishlist() {
+            const wishlist = document.getElementById('wishlist');
+            const emptyMessage = document.getElementById('emptyMessage');
+            const totalDisplay = document.getElementById('total');
+            wishlist.innerHTML = ''; // Clear existing items
+            let total = 0;
+
+            if (cart.length === 0) {
+                emptyMessage.style.display = 'block';
+                totalDisplay.style.display = 'none';
+            } else {
+                emptyMessage.style.display = 'none';
+                totalDisplay.style.display = 'block';
+
+                cart.forEach(item => {
+                    const li = document.createElement('li');
+                    li.classList.add('wishlist-item');
+                    li.innerHTML = `
+                        <span>${item.name} - ₹${item.price}</span>
+                        <button onclick="removeFromWishlist(${item.id})">Remove</button>
+                    `;
+                    wishlist.appendChild(li);
+                    total += item.price;
+                });
+
+                totalDisplay.textContent = `Total: ₹${total}`;
+            }
+        }
+
+        // Function to add an item to the wishlist
+        function addToWishlist(productId) {
+            const product = products.find(p => p.id === productId);
+            if (product && !cart.some(item => item.id === productId)) {
+                cart.push(product);
+                renderWishlist();
+            }
+        }
+
+        // Function to remove an item from the wishlist
+        function removeFromWishlist(productId) {
+            const index = cart.findIndex(item => item.id === productId);
+            if (index !== -1) {
+                cart.splice(index, 1);
+                renderWishlist();
+            }
+        }
+
+        // Initial render
+        renderWishlist();
+
+        // Example of adding items to the wishlist (dynamic behavior)
+        // Uncomment to simulate adding products:
+        // addToWishlist(1);
+        // addToWishlist(2);
+    </script>
+</body>
+</html>

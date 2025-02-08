@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Men's Clothing</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #000;
+            --secondary-color: #fff;
+            --accent-color: #4CAF50;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            background-color: #f9f3f3;
+            color: var(--primary-color);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .top-section {
+            text-align: left;
+            max-width: 500px;
+        }
+
+        .breadcrumb {
+            margin-bottom: 10px;
+            font-size: 14px;
+            color: #6d6a6a;
+        }
+
+        .header {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+
+        .description {
+            width: 800px;
+            margin-bottom: 15px;
+            color: #1f1b1b;
+        }
+
+        .refine-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: var(--primary-color);
+            color: var(--secondary-color);
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .refine-button:hover {
+            background-color: var(--accent-color);
+            transform: scale(1.05);
+        }
+
+        .products {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .product {
+            background-color: var(--secondary-color);
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            overflow: hidden;
+            transition: transform 0.3s ease;
+            position: relative;
+            text-align: center;
+            padding-bottom: 15px;
+        }
+        .heart {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 24px;
+            cursor: pointer;
+            color: #ccc;
+        }
+        .heart.liked {
+            color: red;
+        }
+
+
+        .product:hover {
+            transform: scale(1.05);
+        }
+
+        .product img {
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .product-details {
+            padding: 10px;
+        }
+
+        .product-name {
+            font-weight: bold;
+            margin: 10px 0;
+        }
+        .wishlist-icon {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        font-size: 24px;
+        color: grey;
+        cursor: pointer;
+        transition: color 0.3s ease;
+      }
+
+      .wishlist-icon.active {
+        color: red;
+      }
+
+        .product-name-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+            transition: color 0.3s ease;
+            font-size: larger;
+        }
+
+        .product-name-btn:hover {
+            color: var(--accent-color);
+        }
+
+        .product-price {
+            color: #333;
+            font-weight: bold;
+            margin-top: 5px;
+        }
+
+        @media screen and (max-width: 768px) {
+            .products {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            .products {
+                grid-template-columns: 1fr;
+            }
+
+            .top-section {
+                max-width: 100%;
+                text-align: center;
+            }
+        }
+        
+        footer {
+    background-color: #fff;
+    font-family: Arial, sans-serif;
+    padding: 20px 0;
+}
+
+.footer-container {
+    width: 100%;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    
+}
+
+.join-club {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   width: 100%;
+   background-color: #E60012;
+   padding: 3em 10em;
+   color:white
+}
+
+.join-club h2 {
+    margin: 0;
+    font-size: 30px;
+    font-family: "Kanit", serif;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+}
+
+.join-btn {
+    text-decoration: none;
+    color: white;
+    background-color: black;
+    font-weight: 500;
+    padding: 0.7em 6em;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.join-btn:hover {
+    background-color: rgb(16, 16, 71);
+}
+
+.footer-links {
+   display: flex;
+   
+   width: 100%;
+   justify-content: flex-start;
+   padding: 4em 10em;
+}
+
+.column {
+    /* flex: 1; */
+    min-width: 300px;
+    margin-bottom: 20px;
+}
+
+.column h3 {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.column ul {
+    list-style: none;
+    padding: 0;
+}
+
+.column ul li {
+    margin-bottom: 5px;
+}
+
+.column ul li a {
+    text-decoration: none;
+    color: black;
+    transition: color 0.3s ease;
+    font-size:15px;
+}
+
+.column ul li a:hover {
+    color: rgb(21, 21, 104);
+}
+
+.payment-icons img {
+    width: 40px;
+    margin-right: 10px;
+}
+
+.footer-bottom {
+    background-color: #0033A0;
+    color: white;
+    text-align: left;
+    padding: 1.8em 12em;
+    font-size: 13px;
+    justify-content: center;
+    width: 100%;
+    
+}
+.payment-icons{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+@media screen and (max-width: 768px) {
+    .footer-container {
+        width: 90%;
+    }
+    .footer-links {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    .column {
+        min-width: auto;
+        width: 100%;
+    }
+    .payment-icons {
+        display: flex;
+        justify-content: center;
+    }
+}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="top-section">
+            <div class="breadcrumb">
+                <a href="#">Home</a> / Men / Clothing
+            </div>
+            <div class="header">MEN'S CLOTHING</div>
+            <p class="description">Our selection of men’s clothing is designed with both athletic performance and style in mind. Get set up for your training programme with our workout essentials like tracksuits, joggers, shorts, t-shirts. Add a hoodie or jacket before heading outside to beat your personal best.
+
+            </p>
+            <button class="refine-button" onclick="showRefineOptions()">Refine</button>
+        </div>
+
+        <div class="products" id="productsContainer"></div>
+    </div>
+
+    <script>
+        const productData = [
+            { name: "Reebok Identity Brand Proud T-Shirt", img: "https://images.reebok.eu/reebok-reebok-identity-brand-proud-t-shirt_25354175_55967848_1000.jpg?c=1", price: 79.99 },
+            { name: "Brand Proud Hoodie", img: "https://images.reebok.eu/reebok-brand-proud-hoodie_25354193_57271768_1000.jpg?c=1", price: 69.99 },
+            { name: "Brand Proud Hoodie", img: "https://images.reebok.eu/reebok-brand-proud-hoodie_25354172_57271749_1000.jpg?c=1", price: 49.99 },
+            { name: "Reebok Identity Small Logo Fleece Crew", img: "https://images.reebok.eu/reebok-reebok-identity-small-logo-fleece-crew_22252073_57430426_1000.jpg?c=1", price: 39.99 },
+            { name: "Reebok Identity Big Logo Sweatshirt", img: "https://images.reebok.eu/reebok-reebok-identity-big-logo-sweatshirt_25353385_55963141_1000.jpg?c=1", price: 79.99 },
+            { name: "Cross Check Crew Sweatshirt", img: "https://images.reebok.eu/reebok-cross-check-crew-sweatshirt_25353349_56522434_1000.jpg?c=1", price: 69.99 },
+            { name: "Reebok Identity Big Logo Sweatshirt", img: "https://images.reebok.eu/reebok-reebok-identity-big-logo-sweatshirt_25353330_55963258_1000.jpg?c=1", price: 49.99 },
+            { name: "Reebok Identity French Terry Hoodie", img: "https://images.reebok.eu/reebok-reebok-identity-french-terry-hoodie_19728546_45172427_1000.jpg?c=1", price: 39.99 },
+            { name: "Classic Archive Essentials Sweatshirt", img: "https://images.reebok.eu/reebok-classic-archive-essentials-sweatshirt_22252031_53427665_1000.jpg?c=1", price: 79.99 },
+            { name: "Reebok Identity Motion Camo Hoodie", img: "https://images.reebok.eu/reebok-reebok-identity-motion-camo-hoodie_22251349_52538986_1000.jpg?c=1", price: 69.99 },
+            { name: "Classics Vector Track Pants", img: "https://images.reebok.eu/reebok-classics-vector-track-pants_20137720_50315649_1000.jpg?c=1", price: 49.99 },
+            { name: "Classics Vector Track Jacket", img: "https://images.reebok.eu/reebok-classics-vector-track-jacket_19727419_44907615_1000.jpg?c=1", price: 39.99 },
+            { name: "Reebok Identity Graphic Logo T-Shirt", img: "https://images.reebok.eu/reebok-reebok-identity-graphic-logo-t-shirt_20139162_51421163_1000.jpg?c=1", price: 79.99 },
+            { name: "Reebok Identity Brand Proud Quarter-Zip", img: "https://images.reebok.eu/reebok-reebok-identity-brand-proud-quarter-zip_22250935_52225905_1000.jpg?c=1", price: 69.99 },
+            { name: "Classic Archive Essentials T-Shirt", img: "https://images.reebok.eu/reebok-classic-archive-essentials-t-shirt_20139211_51386446_1000.jpg?c=1", price: 49.99 },
+            { name: "Running T-Shirt", img: "https://images.reebok.eu/reebok-running-t-shirt_22253053_52736546_1000.jpg?c=1", price: 39.99 },
+            { name: "Classic Court Sport Jacket", img: "https://images.reebok.eu/reebok-classic-court-sport-jacket_22250709_52370322_1000.jpg?c=1", price: 79.99 },
+            { name: "Classic Court Sport Pants", img: "https://images.reebok.eu/reebok-classic-court-sport-pants_22250801_57834288_1000.jpg?c=1", price: 69.99 },
+            { name: "Classic Graphic Series Sweatshirt", img: "https://images.reebok.eu/reebok-classic-graphic-series-sweatshirt_20140166_51477705_1000.jpg?c=1", price: 49.99 },
+            { name: "Graphic Series Attack Tee", img: "https://images.reebok.eu/reebok-graphic-series-attack-tee_25353396_56521232_1000.jpg?c=1", price: 39.99 },
+            { name: "Classic Uniform Hoodie", img: "https://images.reebok.eu/reebok-classic-uniform-hoodie_22251412_53427770_1000.jpg?c=1", price: 79.99 },
+            { name: "Reebok x Hed Mayner Utility Parka", img: "https://images.reebok.eu/reebok-ltd-reebok-x-hed-mayner-utility-parka_23358309_57413153_1000.jpg?c=1", price: 69.99 },
+            { name: "Classic Uniform Track Pants", img: "https://images.reebok.eu/reebok-classic-uniform-track-pants_22250857_52579808_1000.jpg?c=1", price: 49.99 },
+            { name: "Reebok Identity Small Logo Fleece Hoodie", img: "https://images.reebok.eu/reebok-reebok-identity-small-logo-fleece-hoodie_25354142_57676812_1000.jpg?c=1", price: 39.99 },
+        ];
+
+        function renderProducts() {
+            const productsContainer = document.getElementById('productsContainer');
+            productsContainer.innerHTML = '';
+
+            productData.forEach((product) => {
+                const productCard = document.createElement('div');
+                productCard.classList.add('product');
+                productCard.innerHTML = `
+                 <span class="heart" onclick="toggleLike(this)">❤</span>
+                    <img src="${product.img}" alt="${product.name}">
+                    <div class="product-details">
+                        <button class="product-name-btn product-name" onclick="showProductDetails('${product.name}')">
+                            ${product.name}
+                        </button>
+                        <div class="product-price">£${product.price.toFixed(2)}</div>
+                    </div>
+                `;
+                productsContainer.appendChild(productCard);
+            });
+        }
+        function toggleLike(element) {
+            element.classList.toggle("liked");
+        }
+
+        function showProductDetails(productName) {
+            alert(`More details about: ${productName}`);
+        }
+
+        function showRefineOptions() {
+            alert('Refine options: Size, Color, Price Range, Brand');
+        }
+
+        renderProducts();
+    </script>
+     
+     <footer>
+        <div class="footer-container">
+            <div class="join-club">
+                <h2>JOIN THE REEBOK CLUB</h2>
+                <a href="#" class="join-btn">JOIN THE CLUB</a>
+            </div>
+            <div class="footer-links">
+                <div class="column">
+                    <h3>SUPPORT</h3>
+                    <ul>
+                        <li><a href="#">Help</a></li>
+                        <li><a href="#">Track your order</a></li>
+                        <li><a href="#">Return your order</a></li>
+                    </ul>
+                </div>
+                <div class="column">
+                    <h3>LEGAL</h3>
+                    <ul>
+                        <li><a href="#">Terms & Conditions</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Cookie Policy</a></li>
+                        <li><a href="#">Cookie Preferences</a></li>
+                    </ul>
+                </div>
+            
+                <div class="column">
+                    <div class="column">
+                        <h3>COUNTRY / CURRENCY</h3>
+                        <p>United Kingdom </p>
+                    </div>
+                    <div class="column">
+                        <h3>PAYMENT METHODS</h3>
+                        <div class="payment-icons">
+                            <img src="https://tse1.mm.bing.net/th?id=OIP.6VUk2qrotejrfqQMaydt9gHaHa&pid=Api&P=0&h=180" alt="VISA">
+                            <img src="https://tse3.mm.bing.net/th?id=OIP.SMRAUH1Opd_qIHy2tsFoIwHaB9&pid=Api&P=0&h=180" alt="PayPal">
+                            <img src="https://tse1.mm.bing.net/th?id=OIP.Gc214x8Q-q3hAwb5QeG_2gHaEK&pid=Api&P=0&h=180" alt="Apple Pay">
+                            <img src="https://tse3.mm.bing.net/th?id=OIP.f1VPXtuKHG7QEoWnXQhGGgHaBp&pid=Api&P=0&h=180" alt="Klarna">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>Reebok™ is a trademark of Reebok International Limited. ©2023 Reebok International Limited. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
