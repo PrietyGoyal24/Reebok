@@ -89,6 +89,18 @@
             text-align: center;
             padding-bottom: 15px;
         }
+        .heart {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 24px;
+            cursor: pointer;
+            color: #ccc;
+        }
+        .heart.liked {
+            color: red;
+        }
+
 
         .product:hover {
             transform: scale(1.05);
@@ -109,6 +121,19 @@
             font-weight: bold;
             margin: 10px 0;
         }
+        .wishlist-icon {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        font-size: 24px;
+        color: grey;
+        cursor: pointer;
+        transition: color 0.3s ease;
+      }
+
+      .wishlist-icon.active {
+        color: red;
+      }
 
         .product-name-btn {
             background: none;
@@ -145,6 +170,132 @@
                 text-align: center;
             }
         }
+        
+        footer {
+    background-color: #fff;
+    font-family: Arial, sans-serif;
+    padding: 20px 0;
+}
+
+.footer-container {
+    width: 100%;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    
+}
+
+.join-club {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   width: 100%;
+   background-color: #E60012;
+   padding: 3em 10em;
+   color:white
+}
+
+.join-club h2 {
+    margin: 0;
+    font-size: 30px;
+    font-family: "Kanit", serif;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+}
+
+.join-btn {
+    text-decoration: none;
+    color: white;
+    background-color: black;
+    font-weight: 500;
+    padding: 0.7em 6em;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.join-btn:hover {
+    background-color: rgb(16, 16, 71);
+}
+
+.footer-links {
+   display: flex;
+   
+   width: 100%;
+   justify-content: flex-start;
+   padding: 4em 10em;
+}
+
+.column {
+    /* flex: 1; */
+    min-width: 300px;
+    margin-bottom: 20px;
+}
+
+.column h3 {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.column ul {
+    list-style: none;
+    padding: 0;
+}
+
+.column ul li {
+    margin-bottom: 5px;
+}
+
+.column ul li a {
+    text-decoration: none;
+    color: black;
+    transition: color 0.3s ease;
+    font-size:15px;
+}
+
+.column ul li a:hover {
+    color: rgb(21, 21, 104);
+}
+
+.payment-icons img {
+    width: 40px;
+    margin-right: 10px;
+}
+
+.footer-bottom {
+    background-color: #0033A0;
+    color: white;
+    text-align: left;
+    padding: 1.8em 12em;
+    font-size: 13px;
+    justify-content: center;
+    width: 100%;
+    
+}
+.payment-icons{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+@media screen and (max-width: 768px) {
+    .footer-container {
+        width: 90%;
+    }
+    .footer-links {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    .column {
+        min-width: auto;
+        width: 100%;
+    }
+    .payment-icons {
+        display: flex;
+        justify-content: center;
+    }
+}
     </style>
 </head>
 <body>
@@ -199,6 +350,7 @@
                 const productCard = document.createElement('div');
                 productCard.classList.add('product');
                 productCard.innerHTML = `
+                 <span class="heart" onclick="toggleLike(this)">❤</span>
                     <img src="${product.img}" alt="${product.name}">
                     <div class="product-details">
                         <button class="product-name-btn product-name" onclick="showProductDetails('${product.name}')">
@@ -209,6 +361,9 @@
                 `;
                 productsContainer.appendChild(productCard);
             });
+        }
+        function toggleLike(element) {
+            element.classList.toggle("liked");
         }
 
         function showProductDetails(productName) {
@@ -221,5 +376,52 @@
 
         renderProducts();
     </script>
+     
+     <footer>
+        <div class="footer-container">
+            <div class="join-club">
+                <h2>JOIN THE REEBOK CLUB</h2>
+                <a href="#" class="join-btn">JOIN THE CLUB</a>
+            </div>
+            <div class="footer-links">
+                <div class="column">
+                    <h3>SUPPORT</h3>
+                    <ul>
+                        <li><a href="#">Help</a></li>
+                        <li><a href="#">Track your order</a></li>
+                        <li><a href="#">Return your order</a></li>
+                    </ul>
+                </div>
+                <div class="column">
+                    <h3>LEGAL</h3>
+                    <ul>
+                        <li><a href="#">Terms & Conditions</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Cookie Policy</a></li>
+                        <li><a href="#">Cookie Preferences</a></li>
+                    </ul>
+                </div>
+            
+                <div class="column">
+                    <div class="column">
+                        <h3>COUNTRY / CURRENCY</h3>
+                        <p>United Kingdom </p>
+                    </div>
+                    <div class="column">
+                        <h3>PAYMENT METHODS</h3>
+                        <div class="payment-icons">
+                            <img src="https://tse1.mm.bing.net/th?id=OIP.6VUk2qrotejrfqQMaydt9gHaHa&pid=Api&P=0&h=180" alt="VISA">
+                            <img src="https://tse3.mm.bing.net/th?id=OIP.SMRAUH1Opd_qIHy2tsFoIwHaB9&pid=Api&P=0&h=180" alt="PayPal">
+                            <img src="https://tse1.mm.bing.net/th?id=OIP.Gc214x8Q-q3hAwb5QeG_2gHaEK&pid=Api&P=0&h=180" alt="Apple Pay">
+                            <img src="https://tse3.mm.bing.net/th?id=OIP.f1VPXtuKHG7QEoWnXQhGGgHaBp&pid=Api&P=0&h=180" alt="Klarna">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>Reebok™ is a trademark of Reebok International Limited. ©2023 Reebok International Limited. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
 </body>
 </html>
