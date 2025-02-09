@@ -320,8 +320,494 @@
     }
 }
     </style>
+      <!-- Navbar Style -->
+      <style>
+        :root {
+            --primary-color: #E01919;
+            --text-color: #1a1a1a;
+            --text-light: #666;
+            --bg-color: #fff;
+            --notification-bg: #1E2746;
+            --border-color: #eee;
+            --shadow-color: rgba(0, 0, 0, 0.1);
+            --transition-fast: 0.2s;
+            --transition-normal: 0.3s;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.5;
+        }
+
+        /* Notification Bar */
+        .notification-bar {
+            background: var(--notification-bg);
+            color: var(--bg-color);
+            text-align: center;
+            padding: 10px;
+            font-size: 13px;
+            font-weight: 500;
+        }
+
+        /* Navigation */
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            background: var(--bg-color);
+            position: sticky;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            margin: 0 0;
+            padding: 0 8em;
+            padding-right: 10em;
+            align-items: center;
+            border-bottom: 1px solid var(--border-color);
+            transition: box-shadow var(--transition-normal);
+        }
+
+        .nav.scrolled {
+            box-shadow: 0 2px 10px var(--shadow-color);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            /* margin: 0 auto; */
+            padding: 15px 40px;
+            display: flex;
+            align-items: center;
+            gap: 40px;
+
+        }
+
+        /* Logo */
+        .logo img {
+            width: 85px;
+            height: auto;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        /* Navigation Items */
+        .nav-items {
+            display: flex;
+            list-style: none;
+            gap: 32px;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-item {
+            position: static;
+        }
+
+        .nav-link {
+            color: var(--text-color);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+            padding: 8px 0;
+            display: block;
+
+            transition: color var(--transition-fast);
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary-color);
+            transition: width var(--transition-normal);
+        }
+
+        .nav-link:hover {
+            color: var(--primary-color);
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        /* Mega Menu */
+        .mega-menu {
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%) translateY(10px);
+            width: 100%;
+            /* border: 1px solid red; */
+            background: var(--bg-color);
+            padding: 40px;
+            opacity: 0;
+            visibility: hidden;
+            transition: all var(--transition-normal);
+            /* box-shadow: 0 4px 20px var(--shadow-color); */
+            pointer-events: none;
+
+
+        }
+
+        .nav-item:hover .mega-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(-50%) translateY(0);
+            pointer-events: auto;
+            /* background-color: snow; */
+        }
+
+        .mega-menu-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px;
+            column-gap: 200px;
+        }
+
+        /* Menu Columns */
+        .menu-column {
+            min-width: 100px;
+        }
+
+        .menu-title {
+            font-size: 14px;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--primary-color);
+        }
+
+        .menu-list {
+            list-style: none;
+        }
+
+        .menu-item {
+            margin-bottom: 12px;
+            transition: transform var(--transition-fast);
+        }
+
+        .menu-item:hover {
+            transform: translateX(5px);
+        }
+
+        .menu-link {
+            color: var(--text-light);
+            text-decoration: none;
+            font-size: 14px;
+            transition: color var(--transition-fast);
+        }
+
+        .menu-link:hover {
+            color: var(--primary-color);
+        }
+
+        /* Mobile Menu Icon */
+        .mobile-menu-icon {
+            display: none;
+            cursor: pointer;
+            padding: 10px;
+        }
+
+        .mobile-menu-icon span {
+            display: block;
+            width: 25px;
+            height: 2px;
+            background: var(--text-color);
+            margin: 5px 0;
+            transition: all var(--transition-normal);
+        }
+
+        .navbar-icons {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            /* Reduced gap */
+        }
+
+        .navbar-icons span {
+            font-size: 14px;
+            font-weight: 500;
+            color: #666;
+            /* Slightly grayed out */
+        }
+
+        .navbar-icons i {
+            font-size: 1.1rem;
+            /* Slightly smaller icons */
+            cursor: pointer;
+            color: #333;
+            /* Darker icons */
+        }
+
+        .navbar-icons i:hover {
+            color: #e21328;
+            /* Use Reebok red */
+        }
+
+
+        /* Responsive Styles */
+        @media (max-width: 1200px) {
+            .nav-container {
+                padding: 15px 20px;
+            }
+
+            .mega-menu-container {
+                gap: 20px;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .mobile-menu-icon {
+                display: block;
+            }
+
+            .nav-items {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: var(--bg-color);
+                padding: 20px;
+                flex-direction: column;
+                gap: 10px;
+                box-shadow: 0 2px 10px var(--shadow-color);
+            }
+
+            .nav-items.active {
+                display: flex;
+            }
+
+            .mega-menu {
+                position: static;
+                transform: none;
+                width: 100%;
+                padding: 20px 0;
+                box-shadow: none;
+
+            }
+
+            .mega-menu-container {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .nav-item:hover .mega-menu {
+                transform: none;
+            }
+        }
+    </style>
 </head>
 <body>
+    <nav class="nav">
+        <div class="nav-container">
+            <a href="../index.html" class="logo">
+
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcToo_Z6E58buKz5luZYxcvKIJGcdBANg4ahRw&s"
+                    alt="Reebok Logo">
+
+            </a>
+
+            <div class="mobile-menu-icon" id="mobileMenuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+            <ul class="nav-items">
+                <li class="nav-item">
+                    <a href="./Women/women.html" class="nav-link">WOMEN</a>
+                    <div class="mega-menu">
+                        <div class="mega-menu-container">
+                            <div class="menu-column">
+                                <h3 class="menu-title">FEATURED</h3>
+                                <ul class="menu-list">
+                                    <li class="menu-item"><a href="#" class="menu-link">New In</a></li>
+                                    <li class="menu-item"><a href="#" class="menu-link">Most Popular</a></li>
+                                    <li class="menu-item"><a href="#" class="menu-link">Club C</a></li>
+                                    <li class="menu-item"><a href="#" class="menu-link">Nano X4</a></li>
+                                    <li class="menu-item"><a href="#" class="menu-link">FloatZig 1</a></li>
+                                    <li class="menu-item"><a href="#" class="menu-link">Classic Leather</a></li>
+                                    <li class="menu-item"><a href="#" class="menu-link">Sustainable</a></li>
+                                    <li class="menu-item"><a href="#" class="menu-link">Reebok Collabs</a></li>
+                                </ul>
+                            </div>
+                            <div class="menu-column">
+                                <h3 class="menu-title">SHOES</h3>
+                                <ul class="menu-list">
+                                    <li class="menu-item"><a href="#" class="menu-link">All Shoes</a></li>
+                                    <li class="menu-item"><a href="#" class="menu-link">Classics</a></li>
+                                    <li class="menu-item"><a href="#" class="menu-link">Running</a></li>
+                                    <li class="menu-item"><a href="#" class="menu-link">Training</a></li>
+                                    <li class="menu-item"><a href="#" class="menu-link">Walking</a></li>
+                                    <li class="menu-item"><a href="#" class="menu-link">Sliders & Flip Flops</a></li>
+                                </ul>
+                            </div>
+                            <div class="menu-column">
+                                <h3 class="menu-title">CLOTHING</h3>
+                                <ul class="menu-list">
+                                    <li class="menu-item"><a href="#" class="menu-link">All Clothing</a></li>
+                                    <li class="menu-item"><a href="#" class="menu-link">T-Shirts & Tops</a></li>
+                                    <li class="menu-item"><a href="#" class="menu-link">Sports Bras</a></li>
+                                    <li class="menu-item"><a href="#" class="menu-link">Hoodies & Sweatshirts</a></li>
+                                    <li class="menu-item"><a href="#" class="menu-link">Leggings</a></li>
+                                    <li class="menu-item"><a href="#" class="menu-link">Shorts</a></li>
+                                </ul>
+                            </div>
+                            <div class="menu-column">
+                                <h3 class="menu-title">ACCESSORIES</h3>
+                                <ul class="menu-list">
+                                    <li class="menu-item"><a href="#" class="menu-link">All Accessories</a></li>
+                                    <li class="menu-item"><a href="#" class="menu-link">Bags</a></li>
+                                    <li class="menu-item"><a href="#" class="menu-link">Socks</a></li>
+                                    <li class="menu-item"><a href="#" class="menu-link">Hats & Beanies</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a href="../Men/men.html" class="nav-link">MEN</a>
+
+                    <!-- Similar structure as WOMEN menu -->
+                    <div class="mega-menu">
+                        <div class="mega-menu-container">
+                            <div class="menu-column">
+                                <h3 class="menu-title">FEATURED</h3>
+                                <ul class="menu-list">
+                                    <li class="menu-item"><a href="#" class="menu-link">New In</a></li>
+                                    <li class="menu-item"><a href="#" class="menu-link">Most Popular</a></li>
+                                    <li class="menu-item"><a href="#" class="menu-link">Club C</a></li>
+                                    <li class="menu-item"><a href="#" class="menu-link">Nano X4</a></li>
+                                    <li class="menu-item"><a href="#" class="menu-link">FloatZig 1</a></li>
+                                    <li class="menu-item"><a href="#" class="menu-link">Classic Leather</a></li>
+                                    <li class="menu-item"><a href="#" class="menu-link">Sustainable</a></li>
+                                    <li class="menu-item"><a href="#" class="menu-link">Reebok Collabs</a></li>
+                                </ul>
+                            </div>
+                            <div class="menu-column">
+                                <h3 class="menu-title">SHOES</h3>
+                                <ul class="menu-list">
+                                    <li class="menu-item"><a href="#" class="menu-link">All Shoes</a></li>
+                                    <li class="menu-item"><a href="#" class="menu-link">Classics</a></li>
+                                    <li class="menu-item"><a href="#" class="menu-link">Running</a></li>
+                                    <li class="menu-item"><a href="#" class="menu-link">Training</a></li>
+                                    <li class="menu-item"><a href="#" class="menu-link">Walking</a></li>
+                                    <li class="menu-item"><a href="#" class="menu-link">Sliders & Flip Flops</a></li>
+                                </ul>
+                            </div>
+                            <div class="menu-column">
+                                <h3 class="menu-title">CLOTHING</h3>
+                                <ul class="menu-list">
+                                    <li class="menu-item"><a href="#" class="menu-link">All Clothing</a></li>
+                                    <li class="menu-item"><a href="#" class="menu-link">T-Shirts & Tops</a></li>
+                                    <li class="menu-item"><a href="#" class="menu-link">Sports Bras</a></li>
+                                    <li class="menu-item"><a href="#" class="menu-link">Hoodies & Sweatshirts</a></li>
+                                    <li class="menu-item"><a href="#" class="menu-link">Leggings</a></li>
+                                    <li class="menu-item"><a href="#" class="menu-link">Shorts</a></li>
+                                </ul>
+                            </div>
+                            <div class="menu-column">
+                                <h3 class="menu-title">ACCESSORIES</h3>
+                                <ul class="menu-list">
+                                    <li class="menu-item"><a href="#" class="menu-link">All Accessories</a></li>
+                                    <li class="menu-item"><a href="#" class="menu-link">Bags</a></li>
+                                    <li class="menu-item"><a href="#" class="menu-link">Socks</a></li>
+                                    <li class="menu-item"><a href="#" class="menu-link">Hats & Beanies</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a href="../kids.html" class="nav-link">KIDS</a>
+
+                    <!-- Similar structure as WOMEN menu -->
+                    <div class="mega-menu">
+                        <div class="mega-menu-container">
+                            <div class="menu-column">
+                                <h3 class="menu-title">FEATURED</h3>
+                                <ul class="menu-list">
+                                    <li class="menu-item"><a href="#" class="menu-link">New In</a></li>
+                                    <li class="menu-item"><a href="#" class="menu-link">Most Popular</a></li>
+                                    <li class="menu-item"><a href="#" class="menu-link">Club C</a></li>
+                                    <li class="menu-item"><a href="#" class="menu-link">Nano X4</a></li>
+                                    <li class="menu-item"><a href="#" class="menu-link">FloatZig 1</a></li>
+                                    <li class="menu-item"><a href="#" class="menu-link">Classic Leather</a></li>
+                                    <li class="menu-item"><a href="#" class="menu-link">Sustainable</a></li>
+                                    <li class="menu-item"><a href="#" class="menu-link">Reebok Collabs</a></li>
+                                </ul>
+                            </div>
+                            <div class="menu-column">
+                                <h3 class="menu-title">SHOES</h3>
+                                <ul class="menu-list">
+                                    <li class="menu-item"><a href="#" class="menu-link">All Shoes</a></li>
+                                    <li class="menu-item"><a href="#" class="menu-link">Classics</a></li>
+                                    <li class="menu-item"><a href="#" class="menu-link">Running</a></li>
+                                    <li class="menu-item"><a href="#" class="menu-link">Training</a></li>
+                                    <li class="menu-item"><a href="#" class="menu-link">Walking</a></li>
+                                    <li class="menu-item"><a href="#" class="menu-link">Sliders & Flip Flops</a></li>
+                                </ul>
+                            </div>
+                            <div class="menu-column">
+                                <h3 class="menu-title">CLOTHING</h3>
+                                <ul class="menu-list">
+                                    <li class="menu-item"><a href="#" class="menu-link">All Clothing</a></li>
+                                    <li class="menu-item"><a href="#" class="menu-link">T-Shirts & Tops</a></li>
+                                    <li class="menu-item"><a href="#" class="menu-link">Sports Bras</a></li>
+                                    <li class="menu-item"><a href="#" class="menu-link">Hoodies & Sweatshirts</a></li>
+                                    <li class="menu-item"><a href="#" class="menu-link">Leggings</a></li>
+                                    <li class="menu-item"><a href="#" class="menu-link">Shorts</a></li>
+                                </ul>
+                            </div>
+                            <div class="menu-column">
+                                <h3 class="menu-title">ACCESSORIES</h3>
+                                <ul class="menu-list">
+                                    <li class="menu-item"><a href="#" class="menu-link">All Accessories</a></li>
+                                    <li class="menu-item"><a href="#" class="menu-link">Bags</a></li>
+                                    <li class="menu-item"><a href="#" class="menu-link">Socks</a></li>
+                                    <li class="menu-item"><a href="#" class="menu-link">Hats & Beanies</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                </li>
+                <li class="nav-item">
+                    <a href="../classic.html" class="nav-link">CLASSICS</a>
+                </li>
+                <li class="nav-item">
+                    <a href="../sports.html" class="nav-link">SPORTS</a>
+                </li>
+                <li class="nav-item">
+                    <a href="../stories&LTD/ReebokLTD.html" class="nav-link">REEBOK LTD</a>
+                </li>
+                <li class="nav-item">
+                    <a href="../stories&LTD/stories.html" class="nav-link">STORIES</a>
+                </li>
+            </ul>
+        </div>
+        <div class="navbar-icons">
+            <span>GB / £ EN</span>
+            <span>GB / £ EN</span>
+            <a href="../search.html"><i class="fas fa-search"></i></a>
+            <a href="../singup.html"><i class="fas fa-user"></i></a>
+            <a href="../wishlist.html"><i class="fas fa-heart"></i></a>
+            <a href="../bag.html"><i class="fas fa-shopping-bag"></i></a>
+        </div>
+    </nav>
     <div class="container">
         <div class="top-section">
             <div class="breadcrumb">
@@ -470,6 +956,81 @@
             </div>
         </div>
     </footer>
+    <script>
+        // Sticky Header
+        function handleScroll() {
+            const nav = document.querySelector('.nav');
+            if (window.scrollY > 50) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        }
+
+        // Mobile Menu
+        function setupMobileMenu() {
+            const mobileMenuIcon = document.getElementById('mobileMenuToggle');
+            const navItems = document.querySelector('.nav-items');
+
+            mobileMenuIcon.addEventListener('click', (e) => {
+                e.stopPropagation();
+                navItems.classList.toggle('active');
+                mobileMenuIcon.classList.toggle('active');
+            });
+
+            // Close menu when clicking outside
+            document.addEventListener('click', (e) => {
+                if (!e.target.closest('.nav-container')) {
+                    navItems.classList.remove('active');
+                    mobileMenuIcon.classList.remove('active');
+                }
+            });
+        }
+
+        // Handle Mega Menu on Mobile
+        function setupMobileMenuItems() {
+            if (window.innerWidth <= 992) {
+                const navLinks = document.querySelectorAll('.nav-link');
+
+                navLinks.forEach(link => {
+                    link.addEventListener('click', (e) => {
+                        const megaMenu = link.nextElementSibling;
+                        if (megaMenu && megaMenu.classList.contains('mega-menu')) {
+                            e.preventDefault();
+                            const isOpen = megaMenu.style.display === 'block';
+
+                            // Close all mega menus
+                            document.querySelectorAll('.mega-menu').forEach(menu => {
+                                menu.style.display = 'none';
+                            });
+
+                            // Toggle clicked menu
+                            megaMenu.style.display = isOpen ? 'none' : 'block';
+                        }
+                    });
+                });
+            }
+        }
+
+        // Initialize
+        function init() {
+            window.addEventListener('scroll', handleScroll);
+            setupMobileMenu();
+            setupMobileMenuItems();
+
+            // Update on resize
+            window.addEventListener('resize', () => {
+                setupMobileMenuItems();
+            });
+        }
+
+        // Start when DOM is ready
+        document.addEventListener('DOMContentLoaded', init);
+    </script>
+
+
+    <!-- Script for navbar -->
+
 </body>
 </html>
 
